@@ -69,6 +69,10 @@
     <Compile Include="Migrations\202003041304123_Last_Migration.designer.cs">
       <DependentUpon>202003041304123_Last_Migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003042125565_NewModel_CarManfacturer.cs" />
+    <Compile Include="Migrations\202003042125565_NewModel_CarManfacturer.designer.cs">
+      <DependentUpon>202003042125565_NewModel_CarManfacturer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cars.cs" />
     <Compile Include="Models\Details.cs" />
@@ -94,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003041304123_Last_Migration.resx">
       <DependentUpon>202003041304123_Last_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003042125565_NewModel_CarManfacturer.resx">
+      <DependentUpon>202003042125565_NewModel_CarManfacturer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -42,3 +42,4 @@ E:\C\ADONET\last\HWManyArchEntityLast\DAL\obj\Debug\DAL.csproj.CopyComplete
 E:\C\ADONET\last\HWManyArchEntityLast\DAL\obj\Debug\DAL.dll
 E:\C\ADONET\last\HWManyArchEntityLast\DAL\obj\Debug\DAL.pdb
 E:\C\ADONET\last\HWManyArchEntityLast\DAL\obj\Debug\DAL.Migrations.Last_Migration.resources
+E:\C\ADONET\last\HWManyArchEntityLast\DAL\obj\Debug\DAL.Migrations.NewModel_CarManfacturer.resources
