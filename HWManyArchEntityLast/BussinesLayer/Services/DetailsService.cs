@@ -112,9 +112,5 @@ namespace BussinesLayer.Services
             throw new NotImplementedException();
         }
 
-        public string ValidationCarUniq(string v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -25,7 +25,7 @@ namespace BussinesLayer.Services
         {
             var car = new Cars
             {
-                Name = carModel.Name,
+                Name = ValidationCarUniq(carModel.Name),
                 Details = carModel.Details.Select(x => new Details
                 {
                     NameDetail = x.NameDetail,

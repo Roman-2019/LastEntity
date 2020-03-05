@@ -120,17 +120,15 @@ namespace PresentationLayer.Controllers
 
         public string ValidationCar(string name) 
         {
-            var nameUniq = _carsevice.ValidationCarUniq(name);
-
             int counter = 0;
-            for (int z = 0; z < nameUniq.Length; z++)
+            for (int z = 0; z < name.Length; z++)
             {
-                if (nameUniq[z] == ' ')
+                if (name[z] == ' ')
                     counter++;
             }
             if (counter <= 2)
             {
-                return nameUniq;
+                return name;
             }
             else
             {
