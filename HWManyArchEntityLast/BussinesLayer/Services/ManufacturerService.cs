@@ -175,5 +175,10 @@ namespace BussinesLayer.Services
         {
             throw new NotImplementedException();
         }
+
+        public string ValidationCar(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

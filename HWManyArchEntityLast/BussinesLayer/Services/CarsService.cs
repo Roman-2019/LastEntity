@@ -123,5 +123,29 @@ namespace BussinesLayer.Services
         {
             throw new NotImplementedException();
         }
+
+
+        public string ValidationCar(string name)
+        {
+            var carAll = _carDetailsRepository.GetAll();
+            var currentName = carAll.FirstOrDefault(x => x.Name == name);
+
+            int counter = 0;
+            for (int z = 0; z < name.Length; z++)
+            {
+                if (name[z] == ' ')
+                    counter++;
+            }
+
+            if ((currentName != null) && (counter > 2))
+            {
+                return name;
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+        }
+
     }
 }

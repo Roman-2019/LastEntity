@@ -27,7 +27,7 @@ namespace PresentationLayer.Controllers
         {
             var addcar = new CarModel
             {
-                Name = ValidationCar("New Car Happy Year"),
+                Name = _carcontroller.ValidationCar("New Car Happy Year"),
                 Details = new List<DetailModel>
                 {
                     new DetailModel
@@ -82,7 +82,7 @@ namespace PresentationLayer.Controllers
             var carModel = new CarModel
             {
                 Id = 1,
-                Name = "Peugau"
+                Name = "Peugaut"
             };
 
             _carcontroller.Update(carModel);
@@ -118,34 +118,34 @@ namespace PresentationLayer.Controllers
             return carViewModel;
         }
 
-        public string ValidationCar(string name) 
-        {
-            //bool flagUniq = false;
-            var carAll = _carcontroller.GetAll();
-            var currentName = carAll.FirstOrDefault(x => x.Name == name);
-            //if (currentName != null)
-            //{
-            //    flagUniq = true;
-            //}
+        //public string ValidationCar(string name) 
+        //{
+        //    //bool flagUniq = false;
+        //    var carAll = _carcontroller.GetAll();
+        //    var currentName = carAll.FirstOrDefault(x => x.Name == name);
+        //    //if (currentName != null)
+        //    //{
+        //    //    flagUniq = true;
+        //    //}
 
-            int counter = 0;
-            //bool flagSpace = false;
-            for (int z = 0; z < name.Length; z++)
-            {
-                if (name[z] == ' ')
-                    counter++;
-            }
-            //if (counter > 2)
-            //    flagSpace = true;
+        //    int counter = 0;
+        //    //bool flagSpace = false;
+        //    for (int z = 0; z < name.Length; z++)
+        //    {
+        //        if (name[z] == ' ')
+        //            counter++;
+        //    }
+        //    //if (counter > 2)
+        //    //    flagSpace = true;
 
-            if ((currentName != null) && (counter > 2))
-            {
-                return name;
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
-        }
+        //    if ((currentName != null) && (counter > 2))
+        //    {
+        //        return name;
+        //    }
+        //    else
+        //    {
+        //        throw new NotImplementedException();
+        //    }
+        //}
     }
 }
