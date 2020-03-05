@@ -21,9 +21,17 @@ namespace PresentationLayer.Controllers
 
         public void Add(CarViewModel carViewModel)
         {
+            var newcar = new CarViewModel 
+            {
+                Name= "New Car Happy Year"
+            };
+
+            if (!IsCarValid(newcar))
+                throw new ArgumentException("Car model is Invalid");
+
             var addcar = new CarModel
             {
-                Name = "New Car Happy Year",
+                Name = newcar.Name,
                 Details = new List<DetailModel>
                 {
                     new DetailModel
@@ -35,8 +43,7 @@ namespace PresentationLayer.Controllers
                     }
                 }
             };
-            if (!IsCarValid(addcar))
-                 throw new ArgumentException("Car model is Invalid");
+            
                 _carsevice.Add(addcar);
         }
 
@@ -117,12 +124,12 @@ namespace PresentationLayer.Controllers
         }
 
         //public string ValidationCar(string name)
-        public bool IsCarValid(CarModel car)
+        public bool IsCarValid(CarViewModel carViewModel)
         {
             int counter = 0;
-            for (int z = 0; z <car.Name.Length; z++)
+            for (int z = 0; z < carViewModel.Name.Length; z++)
             {
-                if (car.Name[z] == ' ')
+                if (carViewModel.Name[z] == ' ')
                     counter++;
             }
             if (counter <= 2)
