@@ -13,21 +13,21 @@ namespace PresentationLayer.Controllers
 {
     public class CarsController : IDBController<CarViewModel>
     {
-        private readonly IDBService<CarModel> _carcontroller;
-        private readonly IDBService<DetailModel> _detailcontroller;
-        private readonly IDBService<ManufacturerModel> _manufcontroller;
+        private readonly IDBService<CarModel> _carsevice;
+        //private readonly IDBService<DetailModel> _detailcontroller;
+        //private readonly IDBService<ManufacturerModel> _manufcontroller;
         public CarsController() 
         {
-            _carcontroller = new CarsService();
-            _detailcontroller = new DetailsService();
-            _manufcontroller = new ManufacturerService();
+            _carsevice = new CarsService();
+            //_detailcontroller = new DetailsService();
+            //_manufcontroller = new ManufacturerService();
         }
 
         public void Add(CarViewModel carViewModel)
         {
             var addcar = new CarModel
             {
-                Name = _carcontroller.ValidationCar("New Car Happy Year"),
+                Name = _carsevice.ValidationCar("New Car Happy Year"),
                 Details = new List<DetailModel>
                 {
                     new DetailModel
@@ -39,18 +39,18 @@ namespace PresentationLayer.Controllers
                     }
                 }
             };
-                _carcontroller.Add(addcar);
+            _carsevice.Add(addcar);
         }
 
         public void Delete(int id)
         {
-            _carcontroller.Delete(id);
+            _carsevice.Delete(id);
         }
 
         public IEnumerable<CarViewModel> GetAll()
         {
 
-            var carViewModels = from car in _carcontroller.GetAll()
+            var carViewModels = from car in _carsevice.GetAll()
                                 select new CarViewModel()
                                 {
                                     Id = car.Id,
@@ -85,12 +85,12 @@ namespace PresentationLayer.Controllers
                 Name = "Peugaut"
             };
 
-            _carcontroller.Update(carModel);
+            _carsevice.Update(carModel);
         }
 
         public CarViewModel GetId(int id)
         {
-            var carModel = _carcontroller.GetId(id);
+            var carModel = _carsevice.GetId(id);
 
             var carViewModel = new CarViewModel
             {
@@ -120,8 +120,8 @@ namespace PresentationLayer.Controllers
 
         //public string ValidationCar(string name) 
         //{
-        //    //bool flagUniq = false;
-        //    var carAll = _carcontroller.GetAll();
+        ////    //bool flagUniq = false;
+        //    var carAll = _carsevice.GetAll();
         //    var currentName = carAll.FirstOrDefault(x => x.Name == name);
         //    //if (currentName != null)
         //    //{
@@ -146,6 +146,6 @@ namespace PresentationLayer.Controllers
         //    {
         //        throw new NotImplementedException();
         //    }
-        //}
+        }
     }
 }

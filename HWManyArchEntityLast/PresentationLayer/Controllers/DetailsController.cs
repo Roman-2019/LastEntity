@@ -13,10 +13,10 @@ namespace PresentationLayer.Controllers
 {
     public class DetailsController : IDBController<DetailViewModel>
     {
-        private readonly IDBService<DetailModel> _cardetailscontroller;
+        private readonly IDBService<DetailModel> _cardetailsservice;
         public DetailsController()
         {
-            _cardetailscontroller = new DetailsService();
+            _cardetailsservice = new DetailsService();
         }
 
         public void Add(DetailViewModel detailViewModel)
@@ -28,17 +28,17 @@ namespace PresentationLayer.Controllers
                 CarId = 2,
                 ManufacturerId = 2
             };
-            _cardetailscontroller.Add(detail);
+            _cardetailsservice.Add(detail);
         }
 
         public void Delete(int id)
         {
-            _cardetailscontroller.Delete(id);
+            _cardetailsservice.Delete(id);
         }
 
         public IEnumerable<DetailViewModel> GetAll()
         {
-            var detailViewModel = from detail in _cardetailscontroller.GetAll()
+            var detailViewModel = from detail in _cardetailsservice.GetAll()
                                   select new DetailViewModel
                                   {
                                       NameDetail = detail.NameDetail,
@@ -67,12 +67,12 @@ namespace PresentationLayer.Controllers
                 Price = 9900,
             };
 
-            _cardetailscontroller.Update(detailModel);
+            _cardetailsservice.Update(detailModel);
         }
 
         public DetailViewModel GetId(int id)
         {
-            var detailModel = _cardetailscontroller.GetId(id);
+            var detailModel = _cardetailsservice.GetId(id);
 
             var detailViewModel = new DetailViewModel
             {

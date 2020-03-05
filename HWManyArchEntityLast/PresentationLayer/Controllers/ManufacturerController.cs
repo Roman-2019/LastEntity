@@ -14,10 +14,10 @@ namespace PresentationLayer.Controllers
 {
     public class ManufacturerController : IDBController<ManufacturerViewModel>
     {
-        private readonly IDBService<ManufacturerModel> _manufacturercontroller;
+        private readonly IDBService<ManufacturerModel> _manufacturerservice;
         public ManufacturerController()
         {
-            _manufacturercontroller = new ManufacturerService();
+            _manufacturerservice = new ManufacturerService();
         }
 
         public void Add(ManufacturerViewModel model)
@@ -32,7 +32,7 @@ namespace PresentationLayer.Controllers
 
         public IEnumerable<ManufacturerViewModel> GetAll()
         {
-            var manuf = from manufacturer in _manufacturercontroller.GetAll()
+            var manuf = from manufacturer in _manufacturerservice.GetAll()
                         select new ManufacturerViewModel
                         {
                             Id = manufacturer.Id,
@@ -62,7 +62,7 @@ namespace PresentationLayer.Controllers
 
         public ManufacturerViewModel GetId(int id)
         {
-            var manuf = _manufacturercontroller.GetId(id);
+            var manuf = _manufacturerservice.GetId(id);
 
             var manufModel = new ManufacturerViewModel
             {
