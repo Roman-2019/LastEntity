@@ -22,11 +22,12 @@ namespace PresentationLayer.Controllers
             _detailcontroller = new DetailsService();
             _manufcontroller = new ManufacturerService();
         }
+
         public void Add(CarViewModel carViewModel)
         {
             var addcar = new CarModel
             {
-                Name = "NewCar",
+                Name = ValidationCar("New Car Happy Year"),
                 Details = new List<DetailModel>
                 {
                     new DetailModel
@@ -38,7 +39,7 @@ namespace PresentationLayer.Controllers
                     }
                 }
             };
-            _carcontroller.Add(addcar);
+                _carcontroller.Add(addcar);
         }
 
         public void Delete(int id)
@@ -115,6 +116,36 @@ namespace PresentationLayer.Controllers
             };
 
             return carViewModel;
+        }
+
+        public string ValidationCar(string name) 
+        {
+            //bool flagUniq = false;
+            var carAll = _carcontroller.GetAll();
+            var currentName = carAll.FirstOrDefault(x => x.Name == name);
+            //if (currentName != null)
+            //{
+            //    flagUniq = true;
+            //}
+
+            int counter = 0;
+            //bool flagSpace = false;
+            for (int z = 0; z < name.Length; z++)
+            {
+                if (name[z] == ' ')
+                    counter++;
+            }
+            //if (counter > 2)
+            //    flagSpace = true;
+
+            if ((currentName != null) && (counter > 2))
+            {
+                return name;
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

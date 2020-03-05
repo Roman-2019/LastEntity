@@ -26,7 +26,7 @@ namespace ManyArchEntity
             //detailController.Delete(1002);
 
 
-            //carController.Insert(null);
+            carController.Add(null);
             //carController.Update(null);
             //carController.Delete(6);
 
