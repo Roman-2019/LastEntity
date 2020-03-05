@@ -25,19 +25,19 @@ namespace BussinesLayer.Services
         {
             var car = new Cars
             {
-                Name = ValidationCarUniq(carModel.Name),
+                Name = carModel.Name,
                 Details = carModel.Details.Select(x => new Details
                 {
                     NameDetail = x.NameDetail,
                     Price = x.Price,
                     CarsId = x.CarId,
-                    //DetailTypeId = (int)x.Type,
                     ManufacturerId = x.ManufacturerId
                 }
                 ).ToList(),
                 ManufacturerId = carModel.ManufacturerId
             };
-
+            if (!IsCarValid(car))
+                throw new ArgumentException("Car model is Invalid");
             _carDetailsRepository.Insert(car);
         }
 
@@ -125,19 +125,19 @@ namespace BussinesLayer.Services
         }
 
 
-        public string ValidationCarUniq(string name)
+        public bool IsCarValid(Cars car)
         {
             var carAll = _carDetailsRepository.GetAll();
-            var currentName = carAll.FirstOrDefault(x => x.Name == name);
+            var currentName = carAll.FirstOrDefault(x => x.Name == car.Name);
 
 
             if (currentName == null)
             {
-                return name;
+                return true;
             }
             else
             {
-                throw new ArgumentException();
+                return false;
             }
         }
 

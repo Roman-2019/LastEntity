@@ -14,20 +14,16 @@ namespace PresentationLayer.Controllers
     public class CarsController : IDBController<CarViewModel>
     {
         private readonly IDBService<CarModel> _carsevice;
-        //private readonly IDBService<DetailModel> _detailcontroller;
-        //private readonly IDBService<ManufacturerModel> _manufcontroller;
         public CarsController() 
         {
             _carsevice = new CarsService();
-            //_detailcontroller = new DetailsService();
-            //_manufcontroller = new ManufacturerService();
         }
 
         public void Add(CarViewModel carViewModel)
         {
             var addcar = new CarModel
             {
-                Name = ValidationCar("New Car Happy Year"),
+                Name = "New Car Happy Year",
                 Details = new List<DetailModel>
                 {
                     new DetailModel
@@ -39,7 +35,9 @@ namespace PresentationLayer.Controllers
                     }
                 }
             };
-            _carsevice.Add(addcar);
+            if (!IsCarValid(addcar))
+                 throw new ArgumentException("Car model is Invalid");
+                _carsevice.Add(addcar);
         }
 
         public void Delete(int id)
@@ -118,21 +116,22 @@ namespace PresentationLayer.Controllers
             return carViewModel;
         }
 
-        public string ValidationCar(string name) 
+        //public string ValidationCar(string name)
+        public bool IsCarValid(CarModel car)
         {
             int counter = 0;
-            for (int z = 0; z < name.Length; z++)
+            for (int z = 0; z <car.Name.Length; z++)
             {
-                if (name[z] == ' ')
+                if (car.Name[z] == ' ')
                     counter++;
             }
             if (counter <= 2)
             {
-                return name;
+                return true;
             }
             else
             {
-                throw new ArgumentException();
+                return false;
             }
         }
     }
