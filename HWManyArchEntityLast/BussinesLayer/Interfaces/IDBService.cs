@@ -15,6 +15,6 @@ namespace BussinesLayer.Interfaces
         void Add(T model);
         void Delete(int id);
         void Update(T model);
-        string ValidationCar(string v);
+        string ValidationCarUniq(string v);
     }
 }

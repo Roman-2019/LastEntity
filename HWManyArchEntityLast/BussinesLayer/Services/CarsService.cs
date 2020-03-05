@@ -125,19 +125,13 @@ namespace BussinesLayer.Services
         }
 
 
-        public string ValidationCar(string name)
+        public string ValidationCarUniq(string name)
         {
             var carAll = _carDetailsRepository.GetAll();
             var currentName = carAll.FirstOrDefault(x => x.Name == name);
 
-            int counter = 0;
-            for (int z = 0; z < name.Length; z++)
-            {
-                if (name[z] == ' ')
-                    counter++;
-            }
 
-            if ((currentName != null) && (counter > 2))
+            if (currentName == null)
             {
                 return name;
             }

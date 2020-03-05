@@ -112,7 +112,7 @@ namespace BussinesLayer.Services
             throw new NotImplementedException();
         }
 
-        public string ValidationCar(string v)
+        public string ValidationCarUniq(string v)
         {
             throw new NotImplementedException();
         }
